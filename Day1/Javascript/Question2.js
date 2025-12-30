@@ -1,28 +1,38 @@
 const users = [
   {
     id: 1,
-    name: 'Alice',
+    name: "Alice",
     courses: [
-      { title: 'React', rating: 4.5, completed: true },
-      { title: 'Node', rating: 3.8, completed: true },
-      { title: 'CSS', rating: 4.2, completed: true }
-    ]
+      { title: "React", rating: 4.5, completed: true },
+      { title: "Node", rating: 3.8, completed: true },
+      { title: "CSS", rating: 4.2, completed: true },
+    ],
   },
   {
     id: 2,
-    name: 'Bob',
+    name: "Bob",
     courses: [
-      { title: 'React', rating: 4.7, completed: true },
-      { title: 'Vue', rating: 4.3, completed: false }
-    ]
+      { title: "React", rating: 4.7, completed: true },
+      { title: "Vue", rating: 4.3, completed: false },
+    ],
   },
   {
     id: 3,
-    name: 'Charlie',
+    name: "Charlie",
     courses: [
-      { title: 'Angular', rating: 4.6, completed: true },
-      { title: 'React', rating: 4.8, completed: true },
-      { title: 'Node', rating: 4.1, completed: true }
-    ]
-  }
+      { title: "Angular", rating: 4.6, completed: true },
+      { title: "React", rating: 4.8, completed: true },
+      { title: "Node", rating: 4.1, completed: true },
+    ],
+  },
 ];
+
+const filteredUsers = users.filter((user) => {
+  let qualifiedCourses = user.courses.filter(
+    (course) => course.completed && course.rating > 4.0
+  );
+  return qualifiedCourses.length >= 2;
+});
+
+const result = filteredUsers.map(({ id, name }) => ({ id, name }));
+console.log(result);
