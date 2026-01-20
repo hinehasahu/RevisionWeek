@@ -15,3 +15,20 @@ const orders = [
     ]
   }
 ];
+
+let result = orders.map(o => ({
+  orderId: o.orderId,
+  customerName: o.customer.name,
+  city: o.customer.location.city,
+  totalAmount: o.items.reduce((acc, curr)=> acc + curr.quantity * curr.price, 0)
+}));
+
+console.log(result)
+
+
+
+
+// [
+//   { orderId: 'A1', customerName: 'John', city: 'NYC', totalAmount: 1049 },
+//   { orderId: 'A2', customerName: 'Jane', city: 'LA', totalAmount: 75 }
+// ]
